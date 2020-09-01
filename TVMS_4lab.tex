@@ -1,0 +1,108 @@
+\documentclass{article}
+\input{MyStyle.sty}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Code Listing}
+
+
+\begin{document}
+\shapka{Ашихмин Анатолий (M3239),  Клепов Дмитрий (M3238), Тарасов Егор (M3238)\\
+Обратная связь: dimkakirov43@mail.ru}
+{\bf Задание.}
+
+\begin{itemize}
+	\item Для равномерного и нормального распределений выбрать параметры и
+	построить графики плотности.
+	\item Произвести выборку $n = 10^6$ из соответствующего распределения.
+	\item Для m = $100$ построить гистограмму.
+	\item Объединить графики плотности и гистограмму на одном графике.
+	\item Проверить гипотезу о виде распределения по критерию хи-квадрат.
+\end{itemize}
+
+\bigskip
+
+{\bf Графики.}\\
+
+\begin{figure}[h]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{lab4_unif_plot.png}
+		\caption{Равномерное}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{lab4_norm_plot.png}
+		\caption{Нормальное}
+	\end{minipage}
+\end{figure}
+
+\begin{itemize}
+	\item Нормальное, код:
+	\lstinputlisting[language=Octave]{lab4_norm_plot.m}
+	
+	\item Равномерное, код:
+	\lstinputlisting[language=Octave]{lab4_unif_plot.m}
+	
+\end{itemize}
+
+\begin{itemize}
+	\item Нормальное
+	\lstinputlisting[language=Octave]{t5.m}
+	
+	{\bf Выход:}
+	
+	\begin{lstlisting}
+	Type I error alpha: 0.113000
+	Type I error alpha (corrected): 0.072000
+	Type II error beta with delta=0.005: 0.920000
+	Type II error beta with delta=0.5: 0.000000\end{lstlisting}
+	
+	\item Равномерное
+	\lstinputlisting[language=Octave]{t6.m}
+	
+	{\bf Выход:}
+	
+	\begin{lstlisting}
+	Type I error alpha = 0.052000
+	Type II error alpha with delta=0.005: 0.957000
+	Type II error alpha with delta=0.5: 0.000000\end{lstlisting}
+\end{itemize}
+
+{\bf  Вывод:}
+
+Построили гистограммы, получили эмпирическую оценку плотности. По графикам видно, что гистограмма достаточно хорошо приближает плотность.
+
+Ошибки первого рода сходится с теоритическим значением по критерию хи-квадрат. Ошибка
+второго рода реагирует только на сильные изменения, поэтому можно утверждать, что она
+стремится к нулю при больших n.
+\end{document}

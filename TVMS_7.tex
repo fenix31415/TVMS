@@ -1,0 +1,90 @@
+\documentclass{article}
+\input{MyStyle.sty}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Code Listing}
+
+
+\begin{document}
+	\shapka{Клепов Дмитрий (M3238)\\
+		Обратная связь: dimkakirov43@mail.ru}
+	{\bf Вариант 9}
+	
+	Для случайной величины $X\thicksim\exp(u)$, гипозезы $H_0\colon u=u_0$, альтернативы $H_1\colon u>u0$ построить доверительный интервал для $\alpha$ и проверить гипотезу для $\gamma$.
+	
+	\begin{itemize}
+		\item $n=50$
+		\item $u_0=35$
+		\item $\alpha=0.05$
+		\item $\gamma=0.9$
+		\item $\overline{X}_n=40$
+	\end{itemize}
+	
+	\bigskip
+	
+	{\bf ОМП и информация Фишера}
+	\begin{itemize}
+		\item $I(u)=1/u^2$
+		\item $t_{1-\alpha}=t_{0.95}=1.96$
+		\item $\hat{u}_n=\overline{X}_n=40$
+		\item $I(\hat{u}_n)=1/1600$
+	\end{itemize}
+
+\bigskip
+
+	\textbf{Доверительный интервал}:
+	\begin{itemize}
+		\item $\delta_n=\dfrac{t_{1-\alpha}}{\sqrt{n\cdot I(\hat{u}_n)}}=11.087$
+		\item $\left[\overline{X}_n-\delta_n;\overline{X}_n+\delta_n\right]=[28.913;51.087]$
+	\end{itemize}
+
+	{\bf  Вывод:}
+	$u_0=35\in I_n$, то есть гипотеза принимается.
+	
+	\bigskip
+	
+	\textbf{Правосторонняя альтернатива}
+	\begin{itemize}
+		\item $c_\gamma=1.29$
+		\item $\theta_0=u_0=35$
+	\end{itemize}
+
+	$\Psi_{n,\alpha}^{*}=
+	\left\{\begin{array}{l l}
+	1, & \sqrt{n\cdot I(\theta_0)}\cdot(\hat{\theta}_n-\theta_0)\geqslant c_\gamma\\
+	0, & \text{otherwise}
+	\end{array}\right. $
+	
+	{\bf  Вывод:} $\sqrt{n\cdot I(\theta_0)}\cdot(\hat{\theta}_n-\theta_0)\approx1.01$, то есть гипотеза принимается.
+	
+	
+\end{document}

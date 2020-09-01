@@ -1,0 +1,126 @@
+\documentclass{article}
+\input{MyStyle.sty}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Code Listing}
+
+
+\begin{document}
+	\shapka{Клепов Дмитрий, М3238}
+	\section{Оценка объема}
+	{\bf Задание.}
+	
+	Методом Монте-Карло оценить объем части тела $\{F(\tilde x)\leq c\}$, заключенной в $k$-мерном кубе с ребром $[0,1]$. Функция имеет вид $F(\tilde x) = f(x_1) + f(x_2) + ... + f(x_k)$. Для выбранной надежности $\gamma\geqslant 0.95$ указать асимптотическую точность оценивания и построить асимптотический доверительный интервал для истинного значения объема.  
+	Используя объем выборки $n=10^4$  и  $n=10^6$ оценить скорость сходимости и показать, что доверительные интервалы пересекаются.
+	
+	\bigskip
+	
+	{\bf Вариант 9}
+	\begin{itemize}
+		\item $f(x) = 7^x$
+		\item $k = 10$
+		\item $c = 40.4$ 
+	\end{itemize}
+	
+	{\bf Код:}
+	
+	\lstinputlisting[language=Octave]{test.m}
+	
+	{\bf Выход:}
+	
+	\begin{lstlisting}
+	N=10000
+	S=0.959 (from 0.955114 to 0.962886)
+	Delta=0.00388642
+	
+	N=1000000
+	S=0.958263 (from 0.957871 to 0.958655)
+	Delta=0.000391968
+	\end{lstlisting}
+	
+	{\bf Вывод:}
+	
+	Доверительный интервал при $n = 10^6$ содержится в интервале при $n = 10^4$.\\
+	При увеличении числа итераций в $100$ раз ширина доверительного интервала уменьшилось в $~10$ раз.
+	
+	\newpage
+	
+	\section{Оценка интегралов}
+	{\bf Задание.}
+	Построить оценку интегралов (представить интеграл как математическое ожидание функции,
+	зависящей от случайной величины с известной плотностью) и для выбранной надежности $\gamma \geqslant 0.95$ указать асимптотическую точность оценки и построить асимптотический доверительный интервал для истинного значения интеграла. 
+	\begin{enumerate}
+		\item ${\displaystyle \int\limits_0^{\infty}\dfrac{x+1}{x+2} \cdot exp(-3x) dx}$\\
+		
+		{\bf Код:}\\
+		\lstinputlisting[language=Octave]{test1.m}
+		{\bf Выход:}
+		
+		\begin{lstlisting}
+		Sample=0.188066
+		
+		N = 10000
+		Value=0.187873 (from 0.187538 to 0.188207)
+		Delta=0.000334562
+		
+		N = 1000000
+		Value=0.188058 (from 0.188024 to 0.188092)
+		Delta=3.3727e-005
+		\end{lstlisting}
+		\item ${\displaystyle \int\limits_{-3}^{4} \dfrac{\cos{x}}{x+5} dx}$
+		
+		{\bf Код:}
+		
+		\lstinputlisting[language=Octave]{file1.m}
+		
+		{\bf Выход:}
+		
+		\begin{lstlisting}
+		Sample=-0.161462
+		
+		N = 10000
+		Value=-0.16733 (from -0.190966 to -0.143695)
+		Delta=0.0236355
+		
+		N = 1000000
+		Value=-0.160921 (from -0.163237 to -0.158606)
+		Delta=0.00231553
+		\end{lstlisting}
+	\end{enumerate}
+
+	\bigskip
+
+	{\bf Вывод:}
+	
+	Во всех случаях значение интеграла содержится в доверительных интервалах.
+	При увеличении числа итераций в $100$ раз, ширина доверительного интервала уменьшилась в $10$ раз.
+\end{document}

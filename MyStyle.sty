@@ -1,0 +1,69 @@
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A, T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{enumitem} %[label=\alph*)]]
+%%% Работа с русским языком
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage{ccfonts,eulervm,euler}
+\usepackage{bbding}
+\usepackage{ulem}
+\usepackage{indentfirst}
+\usepackage{hyperref} %гиперссылки
+\frenchspacing
+
+\usepackage{fancyhdr} %Для шапки
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb} % R, Q,.
+\usepackage{mathtools}
+\usepackage{multicol}
+
+\usepackage{indentfirst}
+\parindent=1cm
+\setlist[itemize]{itemsep=2pt, topsep=0pt} %norm lists
+\setlist[enumerate]{itemsep=2pt, topsep=0pt} %norm lists
+
+%%% Страница
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{top=25mm}
+\geometry{bottom=20mm}
+\geometry{left=20mm}
+\geometry{right=20mm}
+
+
+%Определение, теорема, лемма, N.B.
+\newtheorem*{defin*}{Определение}
+\newtheorem{defin}{Определение}
+\newtheorem*{Corollary*}{Следствие}
+\newtheorem{Corollary}{Следствие}
+\newtheorem*{Lemma*}{Лемма}
+\newtheorem{Lemma}{Лемма}
+\newtheorem{Theorem}{Теорема}
+\newtheorem*{Theorem*}{Теорема}
+\newtheorem{NB}{N.B}
+\newtheorem*{NB*}{N.B}
+\newtheorem{Example}{Пример}
+\newtheorem*{Example*}{Пример}
+
+%Proof
+\newenvironment{Proof}
+{\par\noindent{\bf Доказательство.}} 
+{\hfill$\scriptstyle\blacksquare$}
+
+\newcommand{\eq}[1][m]{\mathop{\equiv}\limits_{#1}}
+
+\newcommand{\smallheader}[1]{\noindent{\bf #1 }}
+
+\newcommand{\divs}{\,\lower.4ex\vdots\,}% a делится на b
+
+\newcommand{\rmy}[1][m]{\mathbb{R}^{#1}}%$R^m$
+
+\newcommand{\eqdef}{\overset{def}{\underset{}{=}}}% =def
+
+\newcommand{\shapka}[1]{\pagestyle{fancy}\fancyhead[C]{#1}\fancyfoot{}}%Шапка
+
+\newcommand{\chast}[2]{\dfrac{\partial #1}{\partial #2}}
+
+%TADA https://youtu.be/9Cq56iPTQ5A?t=20
+\newcommand{\THEN}{\text{\href{https://youtu.be/9Cq56iPTQ5A?t=20}{Тогда }}}
